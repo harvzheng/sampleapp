@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe User do
-
+  it { should respond_to(:password_confirmation) }
+  it { should respond_to(:remember_token) }
+  it { should respond_to(:authenticate) }
   before do
     @user = User.new(name: "Example User", email: "user@example.com",
                      password: "foobar", password_confirmation: "foobar")
@@ -111,5 +113,8 @@ describe User do
       specify { expect(user_for_invalid_password).to be_false }
     end
   end
+  describe "remember token" do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
+  end
 end
-
