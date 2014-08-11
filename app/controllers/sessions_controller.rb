@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    Rails.logger.debug "PARAMS IS #{params} \n\n\n\n\n\n\n\n"
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       sign_in user
