@@ -11,27 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811162536) do
+ActiveRecord::Schema.define(version: 20140827161352) do
 
-  create_table "microposts", force: true do |t|
-    t.string   "content"
+  create_table "articles", force: true do |t|
+    t.string   "title"
+    t.text     "description"
     t.integer  "user_id"
+    t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "subject_id"
   end
 
-  add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
-
-  create_table "relationships", force: true do |t|
-    t.integer  "follower_id"
-    t.integer  "followed_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "subjects", force: true do |t|
+    t.string  "name"
+    t.integer "subtopic_id"
   end
 
-  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
-  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
+  create_table "subtopics", force: true do |t|
+    t.string  "name"
+    t.integer "topic_id"
+  end
+
+  create_table "topics", force: true do |t|
+    t.string "name"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"

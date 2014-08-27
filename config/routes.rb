@@ -18,6 +18,9 @@ SampleApp::Application.routes.draw do
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/subtopicspage', to: 'static_pages#subtopicspage', via: 'get'
+  match '/contentpage', to: 'static_pages#contentpage', via: 'get'
+  match '/topicspage', to: 'static_pages#topicspage', via: 'get'
 
   get "static_pages/home"
   get "static_pages/help"
